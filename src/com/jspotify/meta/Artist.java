@@ -9,7 +9,7 @@ import com.jspotify.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class Artist {
+public class Artist implements SpotifyItem {
 
 	private String artistID;
 	private String artistName;

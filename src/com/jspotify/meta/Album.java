@@ -9,7 +9,7 @@ import com.jspotify.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class Album {
+public class Album implements SpotifyItem {
 
 	private String albumName;
 	private String albumID;
@@ -44,6 +44,18 @@ public class Album {
 
 	public static boolean isUS(String id) throws IOException {
 		JSONObject json = JSON.readJSONFromURL("http://ws.spotify.com/lookup/1/.json?uri=" + id + "&extras=track");
+		JSONObject album = json.getJSONObject("album");
+		JSONObject avail = album.getJSONObject("availability");
+		if (avail.toString().equals("null")) {
+			return false;
+		}
+		else {
+			String territories = avail.getString("territories").toLowerCase();
+			return territories.contains("us") || territories.contains("worldwide");
+		}
+	}
+	
+	public static boolean isUS(JSONObject json) throws IOException {
 		JSONObject album = json.getJSONObject("album");
 		JSONObject avail = album.getJSONObject("availability");
 		if (avail.toString().equals("null")) {

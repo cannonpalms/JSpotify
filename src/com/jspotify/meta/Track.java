@@ -9,7 +9,7 @@ import com.jspotify.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class Track {
+public class Track implements SpotifyItem {
 
 	private Album album;
 
