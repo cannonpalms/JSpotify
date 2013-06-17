@@ -1,10 +1,10 @@
-package com.cannon.meta;
+package com.jspotify.meta;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cannon.json.JSON;
+import com.jspotify.json.JSON;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
