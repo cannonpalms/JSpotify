@@ -40,9 +40,10 @@ public class Track implements SpotifyItem {
 		JSONArray artistArr = track.getJSONArray("artists");
 		for (int i = 0; i < artistArr.size(); i++) {
 			JSONObject objAt = artistArr.getJSONObject(i);
-			this.artists.add(new Artist(objAt.getString("href"), objAt.getString("name")));
+			if (objAt.has("href")) {
+				this.artists.add(new Artist(objAt.getString("href"), objAt.getString("name")));
+			}
 		}
-
 	}
 
 	public Album getAlbum() {
@@ -76,12 +77,12 @@ public class Track implements SpotifyItem {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append("track name: ");
 		sb.append(getTrackName());
 		sb.append("\ttrack id: ");
 		sb.append(getTrackID());
-		
+
 		return sb.toString();
 	}
 
